@@ -14,8 +14,8 @@ class LoginPageLocators:
     VK_BUTTON = (By.XPATH, '//a[@data-l="t,vkc"]')
     MAIL_BUTTON = (By.XPATH, '//a[@data-l="t,mailru"]')
     YANDEX_BUTTON = (By.XPATH, '//a[@data-l="t,yandex"]')
-    TAB_QR_CODE = (By.XPATH, '//a[@data-l="t,qr_tab"]')
-    TAB_LOGIN = (By.XPATH, '//a[@data-l="t,login_tab"]')
+    QR_TAB = (By.XPATH, '//a[@data-l="t,qr_tab"]')
+    LOGIN_TAB = (By.XPATH, '//a[@data-l="t,login_tab"]')
 
 class LoginPageHelper(BasePage):
     pass
