@@ -6,7 +6,7 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
 
-    def find_element(self, locator, time=5):
+    def find_element(self, locator, time=60):
         return WebDriverWait(self.driver, time).until(expected_conditions.visibility_of_element_located(locator),
                                                       message=f"Не удалось найти элеменет{locator}")
 
