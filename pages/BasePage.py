@@ -1,5 +1,6 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
+import allure
 
 
 class BasePage:
@@ -10,5 +11,9 @@ class BasePage:
         return WebDriverWait(self.driver, time).until(expected_conditions.visibility_of_element_located(locator),
                                                       message=f"Не удалось найти элеменет{locator}")
 
+    @allure.step('Открываем страницу')
     def get_url(self, url):
         return self.driver.get(url)
+
+    def attach_screenschot(self):
+        allure.attach(self.driver.get_screenshot_as_png(), "скриншот", allure.attachment_type.PNG)
