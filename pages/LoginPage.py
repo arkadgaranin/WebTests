@@ -11,6 +11,9 @@ class LoginPageLocators:
     LOGIN_BUTTON = (By.XPATH, '//button[@data-test-id="login-submit-btn"]')
     FORGOT_PASSWORD_LINK = (By.XPATH, '//a[@data-test-id="forgot-password-link"]')
     ERROR_TEXT = (By.XPATH, '//div[@data-test-id="login-error"]')
+    RECOVER_BUTTON = (By.XPATH, '//a[@data-test-id="lockout-recover-btn"]')
+    CANCEL_BUTTON = (By.XPATH, '//*[@data-test-id="lockout-cancel-btn"]')
+    REGISTRATION_BUTTON = (By.XPATH, '//*[@data-test-id="lockout-register-btn"]')
 
 
 class LoginPageHelper(BasePage):
@@ -20,6 +23,8 @@ class LoginPageHelper(BasePage):
         # в тесте создадим объект класса LoginPageHelper, то автомато вызвалась функция и проверила наличие элементов стр-цы
 
     def chek_page(self):
+        with allure.step('Проверяем корректность загрузки стр-цы'):
+            self.attach_screenschot()
         self.find_element(LoginPageLocators.LOGIN_TAB)
         self.find_element(LoginPageLocators.QR_TAB)
         self.find_element(LoginPageLocators.LOGIN_FIELD)
@@ -33,16 +38,22 @@ class LoginPageHelper(BasePage):
         self.find_element(LoginPageLocators.LOGIN_BUTTON).click()
 
     @allure.step('Вводим логин')
-    def enter_username(self):
+    def enter_username(self, login):
+        self.find_element(LoginPageLocators.LOGIN_FIELD).send_keys(login)
         self.attach_screenschot()
-        self.find_element(LoginPageLocators.LOGIN_FIELD).send_keys('arkgaranin')
 
     @allure.step('Вводим пароль')
-    def enter_password(self):
+    def enter_password(self, password):
+        self.find_element(LoginPageLocators.PASSWORD_FIELD).clear()
+        self.find_element(LoginPageLocators.PASSWORD_FIELD).send_keys(password)
         self.attach_screenschot()
-        self.find_element(LoginPageLocators.PASSWORD_FIELD).send_keys('amigo2690')
 
     @allure.step('Проверяем текст ошибки')
     def get_error_text(self):
         self.attach_screenschot()
         return self.find_element(LoginPageLocators.ERROR_TEXT).text
+
+    @allure.step('Переходим к восстановлению')
+    def click_recovery(self):
+        self.attach_screenschot()
+        self.find_element(LoginPageLocators.RECOVER_BUTTON).click()
