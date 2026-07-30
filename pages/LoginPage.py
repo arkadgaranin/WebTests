@@ -13,7 +13,8 @@ class LoginPageLocators:
     ERROR_TEXT = (By.XPATH, '//div[@data-test-id="login-error"]')
     RECOVER_BUTTON = (By.XPATH, '//a[@data-test-id="lockout-recover-btn"]')
     CANCEL_BUTTON = (By.XPATH, '//*[@data-test-id="lockout-cancel-btn"]')
-    REGISTRATION_BUTTON = (By.XPATH, '//*[@data-test-id="lockout-register-btn"]')
+    REGISTRATION_RECOVERY_BUTTON = (By.XPATH, '//*[@data-test-id="lockout-register-btn"]')
+    REGISTRATION_BUTTON = (By.XPATH, '//*[@data-test-id="hero-register-btn"]')
 
 
 class LoginPageHelper(BasePage):
@@ -25,12 +26,12 @@ class LoginPageHelper(BasePage):
     def chek_page(self):
         with allure.step('Проверяем корректность загрузки стр-цы'):
             self.attach_screenschot()
-        self.find_element(LoginPageLocators.LOGIN_TAB)
-        self.find_element(LoginPageLocators.QR_TAB)
-        self.find_element(LoginPageLocators.LOGIN_FIELD)
-        self.find_element(LoginPageLocators.PASSWORD_FIELD)
-        self.find_element(LoginPageLocators.LOGIN_BUTTON)
-        self.find_element(LoginPageLocators.FORGOT_PASSWORD_LINK)
+            self.find_element(LoginPageLocators.LOGIN_TAB)
+            self.find_element(LoginPageLocators.QR_TAB)
+            self.find_element(LoginPageLocators.LOGIN_FIELD)
+            self.find_element(LoginPageLocators.PASSWORD_FIELD)
+            self.find_element(LoginPageLocators.LOGIN_BUTTON)
+            self.find_element(LoginPageLocators.FORGOT_PASSWORD_LINK)
 
     @allure.step('Нажимаем на кнопку Войти')
     def click_login(self):
@@ -57,3 +58,8 @@ class LoginPageHelper(BasePage):
     def click_recovery(self):
         self.attach_screenschot()
         self.find_element(LoginPageLocators.RECOVER_BUTTON).click()
+
+    @allure.step('Переходим к регистрации')
+    def click_registration(self):
+        self.find_element(LoginPageLocators.REGISTRATION_BUTTON).click()
+        self.attach_screenschot()

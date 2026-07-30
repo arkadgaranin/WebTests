@@ -21,4 +21,6 @@ def test_go_to_recovery_after_many_fails(browser):
         LoginPage.click_login()
 
     LoginPage.click_recovery()
-    RecoveryPageHelper(browser)
+
+    with allure.step('Проверяем, что перешли на стр-цу "Восстановление доступа"'):
+        RecoveryPageHelper(browser)

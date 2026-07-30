@@ -16,8 +16,8 @@ def test_empty_login_and_password(browser):
     LoginPage = LoginPageHelper(browser)  # здесь передается browser, т.к LoginPageHelper наследуется от BasePage,
     # а в BasePage в конструкторе передается драйвер, но сам драйвер мы берем из browser?
     LoginPage.click_login()
-
-    assert LoginPage.get_error_text() == EMPTY_LOGIN_AND_PASSWORD_ERROR
+    with allure.step('Проверяем на соответствие текста ошибки'):
+        assert LoginPage.get_error_text() == EMPTY_LOGIN_AND_PASSWORD_ERROR
 
 
 @allure.suite('Проверка формы авторизации')
@@ -27,8 +27,8 @@ def test_empty_password(browser):
     LoginPage = LoginPageHelper(browser)
     LoginPage.enter_username(LOGIN)
     LoginPage.click_login()
-
-    assert LoginPage.get_error_text() == EMPTY_LOGIN_AND_PASSWORD_ERROR
+    with allure.step('Проверяем на соответствие текста ошибки'):
+        assert LoginPage.get_error_text() == EMPTY_LOGIN_AND_PASSWORD_ERROR
 
 
 @allure.suite('Проверка формы авторизации')
@@ -38,5 +38,5 @@ def test_empty_login(browser):
     LoginPage = LoginPageHelper(browser)
     LoginPage.enter_password(PASSWORD)
     LoginPage.click_login()
-
-    assert LoginPage.get_error_text() == EMPTY_LOGIN_AND_PASSWORD_ERROR
+    with allure.step('Проверяем на соответствие текста ошибки'):
+        assert LoginPage.get_error_text() == EMPTY_LOGIN_AND_PASSWORD_ERROR

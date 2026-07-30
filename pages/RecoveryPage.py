@@ -18,7 +18,7 @@ class RecoveryPageHelper(BasePage):
     def chek_page(self):
         with allure.step('Проверяем корректность загрузки стр-цы'):
             self.attach_screenschot()
-        self.find_element(RecoveryPageLocators.PHONE_BUTTON)
-        self.find_element(RecoveryPageLocators.EMAIL_BUTTON)
-        self.find_element(RecoveryPageLocators.QR_CODE)
-        self.find_element(RecoveryPageLocators.SUPPORT_BUTTON)
+            self.find_element(RecoveryPageLocators.PHONE_BUTTON)
+            self.find_element(RecoveryPageLocators.EMAIL_BUTTON)
+            self.find_element(RecoveryPageLocators.QR_CODE)
+            self.find_element(RecoveryPageLocators.SUPPORT_BUTTON)
