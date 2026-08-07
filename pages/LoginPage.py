@@ -20,10 +20,10 @@ class LoginPageLocators:
 class LoginPageHelper(BasePage):
     def __init__(self, driver):
         self.driver = driver
-        self.chek_page()  # вызов функции чек-пейдж прописан здесь в конструкторе класса  для того, чтобы когда
+        self.check_page()  # вызов функции чек-пейдж прописан здесь в конструкторе класса  для того, чтобы когда
         # в тесте создадим объект класса LoginPageHelper, то автомато вызвалась функция и проверила наличие элементов стр-цы
 
-    def chek_page(self):
+    def check_page(self):
         with allure.step('Проверяем корректность загрузки стр-цы'):
             self.attach_screenschot()
             self.find_element(LoginPageLocators.LOGIN_TAB)

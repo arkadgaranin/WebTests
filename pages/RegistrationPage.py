@@ -19,9 +19,9 @@ class RegistrationPageLocators:
 class RegistrationPageHelper(BasePage):
     def __init__(self, driver):
         self.driver = driver
-        self.chek_page()
+        self.check_page()
 
-    def chek_page(self):
+    def check_page(self):
         with allure.step('Проверяем корректность загрузки стр-цы'):
             self.attach_screenschot()
             self.find_element(RegistrationPageLocators.NAME_FIELD)
@@ -52,9 +52,9 @@ class RegistrationByPhonePageLocators:
 class RegistrationByPhonePageHelper(BasePage):
     def __init__(self, driver):
         self.driver = driver
-        self.chek_page()
+        self.check_page()
 
-    def chek_page(self):
+    def check_page(self):
         with allure.step('Проверяем корректность загрузки стр-цы'):
             self.attach_screenschot()
             self.find_element(RegistrationByPhonePageLocators.COUNTRY_CODE_LIST)
@@ -69,8 +69,40 @@ class RegistrationByPhonePageHelper(BasePage):
         country_items = self.find_elements(RegistrationByPhonePageLocators.COUNTRY_CODE_ITEM)
         country_items[random_number].click()
         self.attach_screenschot()
-        return country_items[random_number].text
+        return country_items[random_number].get_attribute('value')
 
-    @allure.step('Получаем значение атрибута value из поля "Код страны и номер"')
-    def get_phone_value(self):
-        return self.find_element(RegistrationByPhonePageLocators.COUNTRY_CODE_LIST).get_attribute('value')
+    @allure.step('Вводим номер телефона')
+    def enter_phone(self, number):
+        self.find_element(RegistrationByPhonePageLocators.PHONE_FIELD).send_keys(number)
+        self.attach_screenschot()
+
+    @allure.step('Нажимаем на кнопку Получить код')
+    def click_get_code_button(self):
+        self.find_element(RegistrationByPhonePageLocators.SEND_CODE_BUTTON).click()
+        self.attach_screenschot()
+
+
+class EnteringCodeFromSmsPageLocators:
+    SMS_CODE_FIELD = (By.XPATH, '//*[@data-test-id="sms-code-input"]')
+    VERIFY_CODE_BTN = (By.XPATH, '//*[@data-test-id="phone-verify-code-btn"]')
+    CHANGE_NUMBER_LINK = (By.XPATH, '//*[@data-test-id="phone-back-to-step-1"]')
+    RETURN_LOGIN_LINK = (By.XPATH, '//*[@data-test-id="login-link-anchor"]')
+    PHONE_NUMBER_TEXT = (By.XPATH, '//*[@data-test-id="phone-step-2-number"]')
+
+
+class EnteringCodeFromSmsPageHelper(BasePage):
+    def __init__(self, driver):
+        self.driver = driver
+        self.check_page()
+
+    def check_page(self):
+        with allure.step('Проверяем корректность загрузки стр-цы'):
+            self.attach_screenschot()
+            self.find_element(EnteringCodeFromSmsPageLocators.SMS_CODE_FIELD)
+            self.find_element(EnteringCodeFromSmsPageLocators.VERIFY_CODE_BTN)
+            self.find_element(EnteringCodeFromSmsPageLocators.CHANGE_NUMBER_LINK)
+            self.find_element(EnteringCodeFromSmsPageLocators.RETURN_LOGIN_LINK)
+            self.find_element(EnteringCodeFromSmsPageLocators.PHONE_NUMBER_TEXT)
+
+    def get_phone_number_text(self):
+        return self.find_element(EnteringCodeFromSmsPageLocators.PHONE_NUMBER_TEXT).text

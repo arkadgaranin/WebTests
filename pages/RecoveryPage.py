@@ -13,9 +13,9 @@ class RecoveryPageLocators:
 class RecoveryPageHelper(BasePage):
     def __init__(self, driver):
         self.driver = driver
-        self.chek_page()
+        self.check_page()
 
-    def chek_page(self):
+    def check_page(self):
         with allure.step('Проверяем корректность загрузки стр-цы'):
             self.attach_screenschot()
             self.find_element(RecoveryPageLocators.PHONE_BUTTON)
