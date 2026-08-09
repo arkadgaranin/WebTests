@@ -1,4 +1,4 @@
-from pages.BasePage import BasePage
+from pages.BasePage import BasePageHelper
 from selenium.webdriver.common.by import By
 import allure
 
@@ -17,7 +17,26 @@ class LoginPageLocators:
     REGISTRATION_BUTTON = (By.XPATH, '//*[@data-test-id="hero-register-btn"]')
 
 
-class LoginPageHelper(BasePage):
+class LoginOkPageLocators:
+    LOGIN_OK_FIELD = (By.XPATH, '//input[@data-test-id="login-input"]')
+    PASSWORD_OK_FIELD = (By.XPATH, '//input[@data-test-id="password-input"]')
+    LOGIN_OK_BUTTON = (By.XPATH, '//button[@data-test-id="enter-action"]')
+
+
+class LoginOkPageHelper(BasePageHelper):
+    def __init__(self, driver):
+        self.driver = driver
+        self.check_ok_page()
+
+    def check_ok_page(self):
+        with allure.step('Проверяем корректность загрузки стр-цы'):
+            self.attach_screenschot()
+            self.find_element(LoginOkPageLocators.LOGIN_OK_FIELD)
+            self.find_element(LoginOkPageLocators.PASSWORD_OK_FIELD)
+            self.find_element(LoginOkPageLocators.LOGIN_OK_BUTTON)
+
+
+class LoginPageHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()  # вызов функции чек-пейдж прописан здесь в конструкторе класса  для того, чтобы когда

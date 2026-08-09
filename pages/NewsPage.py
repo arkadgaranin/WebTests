@@ -1,6 +1,6 @@
 from selenium.webdriver import ActionChains
 
-from pages.BasePage import BasePage
+from pages.BasePage import BasePageHelper
 from selenium.webdriver.common.by import By
 import allure
 
@@ -17,7 +17,7 @@ class NewsPageLocators:
     NEWS_ITEM_NUMBER_11 = (By.XPATH, '//*[@data-test-id="post-header-3"]')
 
 
-class NewsPageHelper(BasePage):
+class NewsPageHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()
