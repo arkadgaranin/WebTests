@@ -35,8 +35,8 @@ class LoginPageHelper(BasePage):
 
     @allure.step('Нажимаем на кнопку Войти')
     def click_login(self):
-        self.attach_screenschot()
         self.find_element(LoginPageLocators.LOGIN_BUTTON).click()
+        self.attach_screenschot()
 
     @allure.step('Вводим логин')
     def enter_username(self, login):
