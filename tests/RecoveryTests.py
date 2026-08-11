@@ -1,7 +1,7 @@
 from core.BaseTest import browser
 from pages.BasePage import BasePageHelper
 from pages.LoginPage import LoginPageHelper
-from pages.RecoveryPage import RecoveryPageHelperHelper
+from pages.RecoveryPage import RecoveryPageHelper
 import allure
 
 BASE_URL = 'https://sn.rv-school.ru/'
@@ -23,4 +23,4 @@ def test_go_to_recovery_after_many_fails(browser):
     LoginPage.click_recovery()
 
     with allure.step('Проверяем, что перешли на стр-цу "Восстановление доступа"'):
-        RecoveryPageHelperHelper(browser)
+        RecoveryPageHelper(browser)

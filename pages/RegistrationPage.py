@@ -16,7 +16,7 @@ class RegistrationPageLocators:
     RETURN_LOGIN_LINK = (By.XPATH, '//*[@data-test-id="login-link-anchor"]')
 
 
-class RegistrationPageHelperHelper(BasePageHelper):
+class RegistrationPageHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()
@@ -49,7 +49,7 @@ class RegistrationByPhonePageLocators:
     RETURN_LOGIN_LINK = (By.XPATH, '//*[@data-test-id="login-link-anchor"]')
 
 
-class RegistrationByPhonePageHelperHelper(BasePageHelper):
+class RegistrationByPhonePageHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()
@@ -90,7 +90,7 @@ class EnteringCodeFromSmsPageLocators:
     PHONE_NUMBER_TEXT = (By.XPATH, '//*[@data-test-id="phone-step-2-number"]')
 
 
-class EnteringCodeFromSmsPageHelperHelper(BasePageHelper):
+class EnteringCodeFromSmsPageHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()
