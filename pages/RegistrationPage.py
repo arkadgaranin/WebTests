@@ -1,4 +1,4 @@
-from pages.BasePage import BasePage
+from pages.BasePage import BasePageHelper
 from selenium.webdriver.common.by import By
 import allure
 import random
@@ -16,7 +16,7 @@ class RegistrationPageLocators:
     RETURN_LOGIN_LINK = (By.XPATH, '//*[@data-test-id="login-link-anchor"]')
 
 
-class RegistrationPageHelper(BasePage):
+class RegistrationPageHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()
@@ -49,7 +49,7 @@ class RegistrationByPhonePageLocators:
     RETURN_LOGIN_LINK = (By.XPATH, '//*[@data-test-id="login-link-anchor"]')
 
 
-class RegistrationByPhonePageHelper(BasePage):
+class RegistrationByPhonePageHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()
@@ -90,7 +90,7 @@ class EnteringCodeFromSmsPageLocators:
     PHONE_NUMBER_TEXT = (By.XPATH, '//*[@data-test-id="phone-step-2-number"]')
 
 
-class EnteringCodeFromSmsPageHelper(BasePage):
+class EnteringCodeFromSmsPageHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()
